@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.last
 
     respond_to do |format|
       if @article.save

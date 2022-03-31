@@ -1,0 +1,22 @@
+<div class="container">
+  <%= form_with(model: @user, local: true, data: { turbo: false }) do |f| %>
+    <%= render 'shared/errors', obj: @user %>
+    <div class="mb-3">
+      <%= f.label :username, class: 'form-label' %>
+      <%= f.text_field :username, class: 'form-control', placeholder: 'Enter an username' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :email, class: 'form-label' %>
+      <%= f.email_field :email, class: 'form-control', placeholder: 'Enter you email address', type: 'email' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :password, class: 'form-label' %>
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Enter a password', type: 'password' %>
+    </div>
+    <br>
+    <div class="btn-group" role="group" aria-label="Form Articles">
+      <%= f.submit disable_with: 'Submiting...', class: 'btn btn-success' %>
+      <%= link_to 'Back to the List of Articles', articles_path, class: 'btn btn-secondary' %>
+    </div>
+  <% end  %>
+</div>

@@ -4,10 +4,10 @@
 .info, .success, .warning, .error, .validation {
   -webkit-animation: seconds 1.0s forwards;
   -webkit-animation-iteration-count: 1;
-  -webkit-animation-delay: 5s;
+  -webkit-animation-delay: 7s;
   animation: seconds 1.0s forwards;
   animation-iteration-count: 1;
-  animation-delay: 5s;
+  animation-delay: 7s;
   position: relative;
     
 }
@@ -47,8 +47,7 @@
   margin-top: 5rem;
 }
 
-#article-container, #about-container, 
-#show-container, #new-container {
+.generic-container {
   margin-top: 5rem;
   margin-bottom: 5rem;
 }
