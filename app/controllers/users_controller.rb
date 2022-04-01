@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   
   def show
     # DRY
+    @articles = @user.articles
   end
 
   private
