@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :set_user, only: [:edit, :update, :show, :destroy]
+
   def index
   end
 
@@ -19,8 +22,31 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def edit
+    # DRY
+  end
+
+  def update
+    # DRY - @user = User.find(params[:id])
+      if @user.update(user_params)
+        flash[:notice] = "User was successfully updated"
+        redirect_to user_url(@user)
+      else
+        flash[:error] = "Something went wrong"
+        render 'edit'
+      end
+  end
+  
+  def show
+    # DRY
+  end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
