@@ -1,9 +1,13 @@
 <div class="container">
+  <%= render "layouts/messages" %>
   <div class="generic-container">
     <h1><%= @article.title %></h1>
     <br>
     <div class="card shadow p-3 mb-4 bg-body rounded">
-      <div class="card-header fst-italic">Featured by: <%= @article.user.username %></div>
+      <div class="card-header fst-italic">
+        Featured by: <%= @article.user.username %>
+        <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+      </div>
       <div class="card-body">
         <div class="card-text text-start"><%= simple_format(@article.description) %></div>
         <%= link_to 'Edit this Article', edit_article_path, class: 'btn btn-outline-primary' %>

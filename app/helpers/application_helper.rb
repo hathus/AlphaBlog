@@ -4,4 +4,9 @@ module ApplicationHelper
 
     link_to text, path, class: class_name
   end
+
+  def define_active_link( controller )
+    class_active = params[:controller] == controller && 
+    %w(index new edit show).include?(params[:action]) ? "active" : ""
+  end
 end

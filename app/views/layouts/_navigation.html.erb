@@ -7,10 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= create_active_link "Articles", articles_path, ["nav-link"] %>
+          <%= create_active_link "Bloggers", users_path, ["nav-link"] %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle <%= define_active_link "articles" %>" 
+            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Articles
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= create_active_link "List All Articles", articles_path, ['dropdown-item'] %></li>
+            <li><%= create_active_link "New Article", new_article_path, ['dropdown-item'] %></li>
+          </ul>
         </li>
         <li class="nav-item">
-          <%= create_active_link "About", about_path, ["nav-link"] %>
+          <%= create_active_link "About Alpha Blog", about_path, ["nav-link"] %>
         </li>
       </ul>
       <form class="d-flex">
