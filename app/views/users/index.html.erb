@@ -1,8 +1,13 @@
 <div class="container">
+  <%= render 'layouts/messages' %>
   <div class="generic-container">
     <h1 class="text-center">Alpha Bloggers</h1>
-    <%= render 'layouts/messages' %>
-    <br>
+    <div class="flickr_pagination mb-3">
+      <div class="page_info">
+        <%= page_entries_info @users %>
+      </div>
+      <%= will_paginate @users, :container => false %>
+    </div>
     <%= render "users" %>
   </div>
 </div>
