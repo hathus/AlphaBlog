@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="generic-container">
+    <h1>Log In</h1>
+    <%= form_with(scope: :session, url: login_path , local: true, data: { turbo: false }) do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, class: 'form-label' %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Enter you email address', type: 'email' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password, class: 'form-label' %>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Enter a password', type: 'password' %>
+      </div>
+      <br>
+      <div class="btn-group" role="group" aria-label="Form Articles">
+        <%= f.submit "Log In", disable_with: 'Submiting...', class: 'btn btn-success' %>
+        <%= link_to 'Cancel and return to articles', articles_path, class: 'btn btn-secondary' %>
+      </div>
+    <% end  %>
+  </div>
+</div>
