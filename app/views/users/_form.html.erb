@@ -16,7 +16,9 @@
     <br>
     <div class="btn-group" role="group" aria-label="Form Articles">
       <%= f.submit disable_with: 'Submiting...', class: 'btn btn-success' %>
-      <%= link_to 'Back to your profile', users_path(@user), class: 'btn btn-secondary' %>
+      <% if logged_in? and session[:user_id] == current_user %>
+        <%= link_to 'Back to your profile', user_path(@user), class: 'btn btn-secondary' %>
+      <% end %>
     </div>
   <% end  %>
 </div>

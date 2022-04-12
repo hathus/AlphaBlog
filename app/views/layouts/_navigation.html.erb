@@ -10,29 +10,55 @@
           <%= create_active_link "Bloggers", users_path, ["nav-link"] %>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle <%= define_active_link "articles" %>" 
+          <a class="nav-link dropdown-toggle <%= define_active_link "articles" %>"
             href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Articles
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><%= create_active_link "List All Articles", articles_path, ['dropdown-item'] %></li>
+            <% if logged_in? %>
             <li><%= create_active_link "New Article", new_article_path, ['dropdown-item'] %></li>
+            <% end %>
           </ul>
         </li>
         <li class="nav-item">
           <%= create_active_link "About Alpha Blog", about_path, ["nav-link"] %>
         </li>
+        <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle <%= define_active_link "articles" %>"
+            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= "(Admin)" if current_user.admin? %> [<%= current_user.username %>] profile
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to "Delete your account", user_path(current_user), class: "dropdown-item text-danger",
+                  'data-turbo-method': :delete, data: { turbo_confirm: "Are you sure?" } %>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Logout", logout_path, class: "nav-link", 'data-turbo-method': :delete %>
+        </li>
+        <% else %>
         <li class="nav-item">
           <%= link_to "Login", login_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Logout', logout_path, class: "nav-link", data: { method: :delete } %>
+          <%= link_to 'Sign up', signup_path, class: "nav-link" %>
         </li>
+        <% end %>
       </ul>
       <form class="d-flex">
         <%= form_tag(articles_path, method: :get) do %>
-          <%= text_field_tag(:search, params[:search], class: 'form-control me-2', placeholder: 'Search') %>
-          <%= submit_tag ("Search"), class: 'btn btn-outline-success' %>
+        <%= text_field_tag(:search, params[:search], class: 'form-control me-2', placeholder: 'Search') %>
+        <%= submit_tag ("Search"), class: 'btn btn-outline-success' %>
         <% end  %>
       </form>
     </div>

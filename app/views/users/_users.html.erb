@@ -9,7 +9,9 @@
           <h5 class="card-title"><%= gravatar_for(user, size: 100) %></h5>
           <p class="card-text"><%= pluralize(user.articles.count, "articles") %></p>
           <%= link_to 'Show', user_path(user), class: 'btn btn-outline-primary' %>
-          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-outline-success' %>
+          <% if logged_in? and user == current_user %>
+            <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-outline-success' %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           <small>
