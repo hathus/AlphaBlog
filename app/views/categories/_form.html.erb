@@ -1,0 +1,14 @@
+<div class="container">
+  <%= form_with(model: @category, local: true, data: { turbo: false }) do |f| %>
+    <%= render 'shared/errors', obj: @category %>
+    <div class="mb-3">
+      <%= f.label :name, "Category Name", class: 'form-label' %>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Enter a new category' %>
+    </div>
+    <br>
+    <div class="btn-group" role="group" aria-label="Form Categories">
+      <%= f.submit disable_with: 'Submiting...', class: 'btn btn-success' %>
+      <%= link_to 'Return to all articles', articles_path, class: 'btn btn-primary' %>
+    </div>
+  <% end  %>
+</div>

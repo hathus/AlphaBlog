@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   # get 'logout', to: 'sessions#destroy'
   delete 'logout', to: 'sessions#destroy'
-  #resources :categories, except: [:destroy]
+  resources :categories, except: [:destroy]
 end
