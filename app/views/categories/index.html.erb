@@ -1,1 +1,26 @@
-
+<div class="container">
+  <br/>
+  <div class="mt-5">
+    <h1>List of the all categories</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @categories.each do |category| %>
+    <tr>
+      <th><%= category.name %></th>
+      <td>
+        <%= link_to 'Show', category_path(category), class: 'btn btn-outline-success' %>
+        <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-outline-secondary' %>
+        <%= link_to 'Destroy', category_path(category), class: 'btn btn-outline-danger disabled', 'data-turbo-method': :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+  </div>
+</div>
