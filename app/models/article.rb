@@ -4,6 +4,9 @@ class Article < ApplicationRecord
 
   belongs_to :user
 
+  has_many :article_categories
+  has_many :categories, through: :article_categories
+
   def self.search(search)
     if search
       article = Article.find_by(title: search)

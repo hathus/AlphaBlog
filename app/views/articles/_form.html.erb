@@ -9,6 +9,11 @@
       <%= f.label :description, class: 'form-label' %>
       <%= f.text_area :description, class: 'form-control', placeholder: 'Description of the Article', rows: '7', style: 'resize: none' %>
     </div>
+    <div class="mb-3">
+      <%= f.label :category, class: 'form-label' %>
+      <%= f.collection_select( :category_ids, Category.all, :id, :name, { prompt: "Selecciona una o multiples categorias de la lista (O ninguna categoria)" },
+          { multiple: true, size: 3, class: 'custom-select form-control' }) %>
+    </div>
     <br>
     <div class="btn-group" role="group" aria-label="Form Articles">
       <%= f.submit disable_with: 'Submiting...', class: 'btn btn-success' %>
